@@ -1,4 +1,9 @@
 node 'stretch' {
+  include ::role::ldap_server
+}
+
+node 'stretch_old'{
+
 
   include ::ssh::server
 
@@ -58,6 +63,36 @@ node 'stretch' {
     relayhost            => 'smtp.ugent.be',
     recipient            => 'rudy.gevaert@ugent.be',
   }
+
+  class { '::icinga2':
+    confd     => false,
+    features  => ['checker','mainlog'],
+  }
+
+#  class { '::icinga2::feature::api':
+#    pki             => 'none',
+#    accept_config   => true,
+#    accept_commands => true,
+#    endpoints       => {
+#      'NodeName'              => {},
+#      'satellite.example.org' => {
+#        'host' => '172.16.2.11',
+#      }
+#    },
+#    zones           => {
+#      'ZoneName' => {
+#        'endpoints' => ['NodeName'],
+#        'parent'    => 'master',
+#      },
+#      'master'      => {
+#        'endpoints' => ['icinga2.myhost.com'],
+#      }
+#    }
+#  }
+#
+#  icinga2::object::zone { 'global-templates':
+#    global => true,
+#  }
 
 }
 
