@@ -2,6 +2,15 @@ node 'stretch' {
   include ::role::ldap_server
 }
 
+node 'www1' {
+  include ::role::university_website
+}
+
+node 'db1' {
+  include ::role::dbserver
+}
+
+
 node 'stretch_old'{
 
 
