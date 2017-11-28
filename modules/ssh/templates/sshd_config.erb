@@ -1,0 +1,146 @@
+# Managed by Puppet
+
+AllowAgentForwarding no
+AllowTcpForwarding no
+Port <%= @port %>
+<%- if @address_family -%>
+AddressFamily <%= @address_family %>
+<%- end -%>
+ListenAddress 0.0.0.0
+Protocol 2
+<% @host_keys.each do |key| -%>
+HostKey <%= key %>
+<% end -%>
+UsePrivilegeSeparation <%= @use_privilege_separation %>
+KeyRegenerationInterval 3600
+ServerKeyBits <%= @server_key_bits %>
+<% if @kex_algorithms.any? -%>
+KexAlgorithms <%= @kex_algorithms.join(',') %>
+<% end -%>
+SyslogFacility <%= @syslog_facility %>
+LogLevel <%= @syslog_level %>
+LoginGraceTime 30s
+PermitRootLogin <%= @permit_root_login %>
+StrictModes yes
+RSAAuthentication yes
+PubkeyAuthentication <%= @pubkey_authentication %>
+<%- if @authorized_keys_file.any? -%>
+<%- if @osfamily == 'RedHat' -%>
+<%# RedHat 6 has openssh-5.3, and it does not support multi AuthorizedKeysFile %>
+<%# So we take the first one%>
+AuthorizedKeysFile <%= @authorized_keys_file.flatten[0] %>
+<%- else -%>
+AuthorizedKeysFile <%= @authorized_keys_file.flatten.join(" ") %>
+<%- end -%>
+<%- end -%>
+<%- if @authorized_keys_command -%>
+AuthorizedKeysCommand <%= @authorized_keys_command %>
+<%- end -%>
+<%- if @authorized_keys_command_user -%>
+<%- if @osfamily == 'RedHat' and @lsbmajdistrelease == '6' -%>
+<%# RedHat 6 has openssh-5.3, and it uses AuthorizedKeysCommandRunAs %>
+AuthorizedKeysCommandRunAs <%= @authorized_keys_command_user %>
+<%- else -%>
+AuthorizedKeysCommandUser <%= @authorized_keys_command_user %>
+<%- end -%>
+<%- end -%>
+IgnoreRhosts yes
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+IgnoreUserKnownHosts yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+PasswordAuthentication <%= @password_authentication %>
+KerberosAuthentication <%= @kerberos_authentication %>
+KerberosOrLocalPasswd no
+KerberosTicketCleanup yes
+GSSAPIAuthentication <%= @gssapi_authentication %>
+GSSAPIKeyExchange <%= @gssapi_keyexchange %>
+GSSAPICleanupCredentials <%= @gssapi_cleanupcredentials %>
+X11UseLocalhost yes
+X11Forwarding <%= @x11_forwarding %>
+X11DisplayOffset 10
+PrintMotd <%= @print_motd %>
+PrintLastLog no
+TCPKeepAlive no
+UseLogin no
+UseDNS <%= @use_dns %>
+<% if @banner_file -%>
+Banner <%= @banner_file %>
+<% end -%>
+<% if @compression -%>
+Compression <%= @compression %>
+<% end -%>
+<% if @client_alive_interval -%>
+ClientAliveInterval <%= @client_alive_interval %>
+<% end -%>
+<% if @client_alive_count_max -%>
+ClientAliveCountMax <%= @client_alive_count_max %>
+<% end -%>
+<% if @debian_banner -%>
+DebianBanner <%= @debian_banner %>
+<% end -%>
+<% if @max_startups -%>
+MaxStartups <%= @max_startups %>
+<% end -%>
+<% if @max_auth_retries -%>
+MaxAuthTries <%= @max_auth_retries %>
+<% end -%>
+<% if @max_sessions -%>
+MaxSessions <%= @max_sessions %>
+<% end -%>
+<% if @ciphers.any? -%>
+Ciphers <%= @ciphers.join(",") %>
+<% end -%>
+<% if @macs.any? -%>
+MACs <%= @macs.join(",") %>
+<% end -%>
+AcceptEnv <%= @accept_env %>
+Subsystem sftp <%= @subsystem_sftp %>
+UsePAM <%= @use_pam %>
+<% if @allowed_users.any? %>
+AllowUsers <%= @allowed_users.join(" ") %>
+<% end %>
+<% if @allowed_groups.any? -%>
+AllowGroups <%= @allowed_groups.join(" ") %>
+<% end -%>
+<% if @deny_groups -%>
+DenyGroups <%= @deny_groups.join(" ") %>
+<% end -%>
+<% if @permit_tty %>
+PermitTTY <%= @permit_tty %>
+<% end -%>
+PermitTunnel <%= @permit_tunnel %>
+GatewayPorts <%= @gateway_ports %>
+PermitUserEnvironment <%= @permit_user_environment %>
+<% if @password_authentication_groups.any? -%>
+<% @password_authentication_groups.each do |val| -%>
+Match Group <%= val %>
+    PasswordAuthentication yes
+<% end -%>
+<% end -%>
+<% if @match_users.any? -%>
+<% @match_users.each do |match_user| -%>
+Match User <%= match_user %>
+<% @password_authentication_users.each do |password_authentication_user| -%>
+<% if password_authentication_user == match_user -%>
+    PasswordAuthentication yes
+<% end -%>
+<% end -%>
+<% @permit_tty_users.each do |permit_tty_user, permit_tty| -%>
+<% if permit_tty_user == match_user -%>
+    PermitTTY <%= permit_tty %>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<% if @match.any? -%>
+<% @match.each do |criteria, patterns| -%>
+<% patterns.each do |pattern, config| -%>
+Match <%= criteria %> <%= pattern %>
+<% config.each do |conf, value| -%>
+    <%= conf %> <%= value %>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>

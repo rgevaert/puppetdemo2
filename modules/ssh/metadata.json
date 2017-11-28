@@ -1,0 +1,50 @@
+{
+  "name": "attachmentgenie-ssh",
+  "version": "2.1.0",
+  "author": "Bram Vogelaar <bram@attachmentgenie.com>",
+  "summary": "Puppet ssh Module",
+  "license": "MIT",
+  "source": "https://github.com/attachmentgenie/attachmentgenie-ssh",
+  "project_page": "https://github.com/attachmentgenie/attachmentgenie-ssh",
+  "issues_url": "https://github.com/attachmentgenie/attachmentgenie-ssh/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">=2.2.1 <5.0.0"}
+  ],
+  "data_provider": null,
+  "description": "Module for configuring ssh.",
+  "tags": [
+    "ssh",
+    "ssh-client",
+    "ssh-server"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ]
+}

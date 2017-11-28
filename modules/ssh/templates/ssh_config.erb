@@ -1,0 +1,37 @@
+# Managed by Puppet
+
+Host *
+ForwardAgent <%= @forward_agent %>
+HostbasedAuthentication <%= @hostbased_authentication %>
+EnableSSHKeySign <%= @enable_ssh_key_sign %>
+ForwardX11 no
+RhostsRSAAuthentication no
+RSAAuthentication yes
+PasswordAuthentication <%= @password_authentication %>
+GSSAPIAuthentication no
+GSSAPIDelegateCredentials no
+BatchMode no
+CheckHostIP yes
+AddressFamily any
+StrictHostKeyChecking ask
+Port 22
+Protocol 2
+<% if @ciphers.any? -%>
+Ciphers <%= @ciphers.join(",") %>
+<% end -%>
+<% if @kex_algorithms.any? -%>
+KexAlgorithms <%= @kex_algorithms.join(',') %>
+<% end -%>
+<% if @macs.any? -%>
+MACs <%= @macs.join(",") %>
+<% end -%>
+Tunnel no
+PermitLocalCommand no
+UseRoaming no
+SendEnv LANG LC_*
+HashKnownHosts yes
+<%- if @known_host_sssd -%>
+GlobalKnownHostsFile /var/lib/sss/pubconf/known_hosts
+ProxyCommand /usr/bin/sss_ssh_knownhostsproxy -p %p %h
+<%- end -%>
+PubkeyAuthentication <%= @pubkey_authentication %>

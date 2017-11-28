@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Puppet Class: ssh::server
+  
+    &mdash; Documentation by YARD 0.9.8
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "puppet_classes::ssh::server";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../puppet_class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (s)</a> &raquo;
+    <span class='title'><span class='object_link'>Puppet Classes</span></span>
+     &raquo; 
+    <span class="title">ssh::server</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="../puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Puppet Class: ssh::server</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd><span class='object_link'><a href="ssh_3A_3Aparams.html" title="puppet_classes::ssh::params (puppet_class)">ssh::params</a></span></dd>
+  </dl>
+  
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>
+      manifests/server.pp
+    </dd>
+  </dl>
+</div>
+<h2>Overview</h2>
+<div class="docstring">
+  <div class="discussion">
+    <p>Class to install and configure ssh server.</p>
+
+<p>Use this module to install and configure ssh server.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Declaring the class</p>
+</div></p>
+      
+      <pre class="example code"><code>include ::ssh::server</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>package</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::server_package</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Package name.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_ensure</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::server_package_ensure</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Standard puppet package ensure.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>accept_env</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::accept_env</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies what environment variables sent by the client will be copied into the session&#39;s environ.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>address_family</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::address_family</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies which address family should be used by sshd(8).</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>allowed_users</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::allowed_users</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>If specified, login is allowed only for user names that match one of the patterns.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>allowed_groups</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::allowed_groups</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>If specified, login is allowed only for users whose primary group or supplementary group list matches one of the pattern.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>authorized_keys_file</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::authorized_keys_file</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the file that contains the public keys that can be used for user authentication.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>authorized_keys_command</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::authorized_keys_command</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies a program to be used for lookup of the user&#39;s public keys.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>authorized_keys_command_user</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::authorized_keys_command_user</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the user under whose account the AuthorizedKeysCommand is run.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>banner_file</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::banner_file</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The contents of the specified file are sent to the remote user before authentication is allowed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>banner_manage</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::banner_manage</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Manage the banner file.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>banner_template</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::banner_template</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Template to use for banner file.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>compression</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::compression</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether compression is allowed, or delayed until the user has authenticated successfully.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ciphers</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::ciphers</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the ciphers allowed for protocol version 2.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client_alive_interval</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::client_alive_interval</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Sets a timeout interval in seconds after which if no data has been received from the client.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client_alive_count_max</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::client_alive_count_max</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Sets the number of client alive messages (see below) which may be sent without sshd(8) receiving any messages back from the client.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>deny_groups</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::deny_groups</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Login is disallowed for users whose primary group or supplementary group list matches one of the patterns.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>debian_banner</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::debian_banner</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the distribution-specified extra version suffix is included during initial protocol handshake.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>gssapi_authentication</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::gssapi_authentication</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether user authentication based on GSSAPI is allowed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>gssapi_keyexchange</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::gssapi_keyexchange</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether key exchange based on GSSAPI is allowed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>gssapi_cleanupcredentials</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::gssapi_cleanupcredentials</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether to automatically destroy the user&#39;s credentials cache on logout.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host_keys</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::host_keys</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies a file containing a private host key used by SSH.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kerberos_authentication</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::kerberos_authentication</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the password provided by the user for PasswordAuthentication will be validated through the Kerberos KDC.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>macs</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::macs</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the available MAC (message authentication code) algorithms.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>manage_service</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::manage_service</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Manage sshd service.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_auth_retries</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::max_auth_retries</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the maximum number of authentication attempts permitted per connection.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_sessions</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::max_sessions</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the maximum number of open sessions permitted per network connection.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_startups</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::max_startups</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the maximum number of concurrent unauthenticated connections to the SSH daemon.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password_authentication</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::password_authentication</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether password authentication is allowed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password_authentication_groups</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::password_authentication_groups</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Introduces a conditional block. If all of the criteria on the Match line are satisfied, the keywords on the following lines override those set in the global section of the config file, until either another Match line or the end of the file.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password_authentication_users</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::password_authentication_users</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Introduces a conditional block. If all of the criteria on the Match line are satisfied, the keywords on the following lines override those set in the global section of the config file, until either another Match line or the end of the file.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>permit_root_login</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::permit_root_login</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether root can log in using ssh.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>permit_tunnel</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::permit_tunnel</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether tun(4) device forwarding is allowed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>permit_tty</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::permit_tty</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether pty(4) allocation is permitted.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>permit_tty_users</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::permit_tty_users</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Introduces a conditional block. If all of the criteria on the Match line are satisfied, the keywords on the following lines override those set in the global section of the config file, until either another Match line or the end of the file.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>permit_user_environment</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::permit_user_environment</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether ~/.ssh/environment and environment= options in ~/.ssh/authorized_keys are processed by sshd.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::port</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the port  number that sshd listens on.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>gateway_ports</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::gateway_ports</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether remote hosts are  allowed to connect to ports forwarded for the client.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>print_motd</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::print_motd</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether sshd(8) should print /etc/motd when a user logs in    interactively.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pubkey_authentication</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::pubkey_authentication</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether public key authentication is allowed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server_key_bits</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::server_key_bits</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Defines the number  of bits in the ephemeral protocol version 1 server key.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::service_name</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Ssh service name.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>subsystem_sftp</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::subsystem_sftp</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Configures  an external subsystem for sftp.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>syslog_facility</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::syslog_facility</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Gives the facility  code that is used when logging messages from sshd.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>syslog_level</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::syslog_level</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Gives the verbosity level that is used when logging messages from sshd.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>template</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::server_config_template</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Template to use for config.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>use_dns</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::use_dns</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>pecifies whether sshd(8) should look up the remote host name, and to check that the resolved host name for the remote IP address maps back to the very same IP address.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>use_pam</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::use_pam</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Enables the Pluggable Authentication Module interface.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x11_forwarding</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::x11_forwarding</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether X11 forwarding is permitted.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>match</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::match</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><h1>@param password_authentication_users (Array) Introduces a conditional block. If all of the criteria on the Match line are satisfied, the keywords on the following lines override those set in the global section of the config file, until either another Match line or the end of the file.</h1>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kex_algorithms</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::kex_algorithms</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies the available KEX (Key Exchange)  algorithms.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>use_privilege_separation</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ssh::params::use_privilege_separation</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether sshd(8) separates privileges by creating  an unprivileged child   process to deal with incoming network traffic.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><div class="method_details_list">
+  <table class="source_code">
+    <tr>
+      <td>
+        <pre class="lines">
+
+
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210</pre>
+      </td>
+      <td>
+        <pre class="code"><span class="info file"># File 'manifests/server.pp', line 60</span>
+
+class ssh::server (
+  $package                        = $::ssh::params::server_package,
+  $package_ensure                 = $::ssh::params::server_package_ensure,
+  $accept_env                     = $::ssh::params::accept_env,
+  $address_family                 = $::ssh::params::address_family,
+  $allowed_users                  = $::ssh::params::allowed_users,
+  $allowed_groups                 = $::ssh::params::allowed_groups,
+  $authorized_keys_file           = $::ssh::params::authorized_keys_file,
+  $authorized_keys_command        = $::ssh::params::authorized_keys_command,
+  $authorized_keys_command_user   = $::ssh::params::authorized_keys_command_user,
+  $banner_file                    = $::ssh::params::banner_file,
+  $banner_manage                  = $::ssh::params::banner_manage,
+  $banner_template                = $::ssh::params::banner_template,
+  $compression                    = $::ssh::params::compression,
+  $ciphers                        = $::ssh::params::ciphers,
+  $client_alive_interval          = $::ssh::params::client_alive_interval,
+  $client_alive_count_max         = $::ssh::params::client_alive_count_max,
+  $deny_groups                    = $::ssh::params::deny_groups,
+  $debian_banner                  = $::ssh::params::debian_banner,
+  $gssapi_authentication          = $::ssh::params::gssapi_authentication,
+  $gssapi_keyexchange             = $::ssh::params::gssapi_keyexchange,
+  $gssapi_cleanupcredentials      = $::ssh::params::gssapi_cleanupcredentials,
+  $host_keys                      = $::ssh::params::host_keys,
+  $kerberos_authentication        = $::ssh::params::kerberos_authentication,
+  $macs                           = $::ssh::params::macs,
+  $manage_service                 = $::ssh::params::manage_service,
+  $max_auth_retries               = $::ssh::params::max_auth_retries,
+  $max_sessions                   = $::ssh::params::max_sessions,
+  $max_startups                   = $::ssh::params::max_startups,
+  $password_authentication        = $::ssh::params::password_authentication,
+  $password_authentication_groups = $::ssh::params::password_authentication_groups,
+  $password_authentication_users  = $::ssh::params::password_authentication_users,
+  $permit_root_login              = $::ssh::params::permit_root_login,
+  $permit_tunnel                  = $::ssh::params::permit_tunnel,
+  $permit_tty                     = $::ssh::params::permit_tty,
+  $permit_tty_users               = $::ssh::params::permit_tty_users,
+  $permit_user_environment        = $::ssh::params::permit_user_environment,
+  $port                           = $::ssh::params::port,
+  $gateway_ports                  = $::ssh::params::gateway_ports,
+  $print_motd                     = $::ssh::params::print_motd,
+  $pubkey_authentication          = $::ssh::params::pubkey_authentication,
+  $server_key_bits                = $::ssh::params::server_key_bits,
+  $service_name                   = $::ssh::params::service_name,
+  $subsystem_sftp                 = $::ssh::params::subsystem_sftp,
+  $syslog_facility                = $::ssh::params::syslog_facility,
+  $syslog_level                   = $::ssh::params::syslog_level,
+  $template                       = $::ssh::params::server_config_template,
+  $use_dns                        = $::ssh::params::use_dns,
+  $use_pam                        = $::ssh::params::use_pam,
+  $x11_forwarding                 = $::ssh::params::x11_forwarding,
+  $match                          = $::ssh::params::match,
+  $kex_algorithms                 = $::ssh::params::kex_algorithms,
+  $use_privilege_separation       = $::ssh::params::use_privilege_separation
+) inherits ssh::params {
+  validate_array(
+    $allowed_groups,
+    $allowed_users,
+    $authorized_keys_file,
+    $ciphers,
+    $deny_groups,
+    $host_keys,
+    $kex_algorithms,
+    $macs,
+    $password_authentication_groups,
+    $password_authentication_users,
+  )
+  validate_bool(
+    $banner_manage,
+    $manage_service,
+  )
+  validate_hash(
+    $match,
+    $permit_tty_users,
+  )
+  validate_integer([
+    $client_alive_count_max,
+    $client_alive_interval,
+    $max_auth_retries,
+    $max_sessions])
+  validate_string(
+    $accept_env,
+    $address_family,
+    $authorized_keys_command,
+    $authorized_keys_command_user,
+    $banner_file,
+    $compression,
+    $package,
+    $package_ensure,
+    $port,
+    $server_key_bits,
+    $service_name,
+    $syslog_facility,
+    $syslog_level,
+    $subsystem_sftp,
+  )
+  validate_re( $gateway_ports, &#39;yes|no&#39; )
+  validate_re( $gssapi_authentication, &#39;yes|no&#39; )
+  validate_re( $gssapi_cleanupcredentials, &#39;yes|no&#39; )
+  validate_re( $gssapi_keyexchange, &#39;yes|no&#39; )
+  validate_re( $kerberos_authentication, &#39;yes|no&#39; )
+  validate_re( $password_authentication, &#39;yes|no&#39; )
+  validate_re( $permit_root_login, &#39;yes|no&#39; )
+  validate_re( $permit_tunnel, &#39;yes|no&#39; )
+  validate_re( $permit_user_environment, &#39;yes|no&#39; )
+  validate_re( $print_motd, &#39;yes|no&#39; )
+  validate_re( $pubkey_authentication, &#39;yes|no&#39; )
+  validate_re( $use_dns, &#39;yes|no&#39; )
+  validate_re( $use_pam, &#39;yes|no&#39; )
+  validate_re( $x11_forwarding, &#39;yes|no&#39; )
+  validate_re( $use_privilege_separation, &#39;yes|no|sandbox&#39; )
+  if $::osfamily == &#39;Debian&#39; {
+    validate_re( $debian_banner, &#39;yes|no&#39; )
+  }
+  if $permit_tty {
+    validate_re( $permit_tty, &#39;yes|no&#39; )
+  }
+
+  $match_users = union($password_authentication_users, keys($permit_tty_users))
+
+  package { &#39;openssh-server&#39;:
+    ensure =&gt; $package_ensure,
+    name   =&gt; $package,
+  } -&gt;
+  file { &#39;/etc/ssh/sshd_config&#39;:
+    content =&gt; template($template),
+    owner   =&gt; root,
+    group   =&gt; root,
+    mode    =&gt; &#39;0600&#39;
+  }
+
+  if $manage_service {
+    service { &#39;sshd&#39;:
+      ensure    =&gt; running,
+      name      =&gt; $service_name,
+      enable    =&gt; true,
+      hasstatus =&gt; true,
+      subscribe =&gt; [Package[&#39;openssh-server&#39;], File[&#39;/etc/ssh/sshd_config&#39;]],
+      require   =&gt; File[&#39;/etc/ssh/sshd_config&#39;],
+    }
+  }
+
+  if $banner_manage {
+    file { $banner_file:
+      content =&gt; template($banner_template),
+      require =&gt; Package[&#39;openssh-server&#39;],
+      owner   =&gt; root,
+      group   =&gt; root,
+      mode    =&gt; &#39;0644&#39;
+    }
+  }
+}</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+      <div id="footer">
+  Generated on Thu Mar 16 15:22:43 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.8 (ruby-2.4.0).
+</div>
+
+    </div>
+  </body>
+</html>
