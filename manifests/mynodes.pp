@@ -2,15 +2,6 @@ node 'stretch' {
   include ::role::ldap_server
 }
 
-node 'www1' {
-  include ::role::university_website
-}
-
-node 'db1' {
-  include ::role::dbserver
-}
-
-
 node 'stretch_old'{
 
 
@@ -103,14 +94,4 @@ node 'stretch_old'{
 #    global => true,
 #  }
 
-}
-
-node 'dns1' {
-}
-
-node 'www1' {
-}
-
-node /^proxy[1-9]/ {
-  include baseline
 }
